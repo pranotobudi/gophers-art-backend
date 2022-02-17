@@ -7,13 +7,18 @@ module:testrunner
 # module:jobs
 
 
-GET     /                                       App.Index
+GET     /                                       App.Hello
+GET     /api/v1/products                        App.GetProducts
+POST    /api/v1/register                        App.RegisterUser
+POST    /api/v1/login                           App.UserLogin
 
 # Ignore favicon requests
-GET     /favicon.ico                            404
+<!-- GET     /favicon.ico                            404 -->
+GET    /favicon.ico                 Static.Serve("public","img/favicon.png")
 
 # Map static resources from the /app/public folder to the /public path
-GET     /public/*filepath                       Static.Serve("public")
+<!-- GET     /public/*filepath                       Static.Serve("public") -->
+GET     /static/*filepath                                 Static.Serve("public")
 
 # Catch all, this will route any request into the controller path
 #
